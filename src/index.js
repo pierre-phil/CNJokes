@@ -5,6 +5,8 @@ import { ChakraProvider, theme } from "@chakra-ui/core";
 import "focus-visible/dist/focus-visible";
 import App from "./App";
 
+import "./App.css";
+
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider theme={theme} resetCSS={true}>

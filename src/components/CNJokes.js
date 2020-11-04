@@ -8,6 +8,7 @@ const CNJokes = () => {
   const toast = useToast();
 
   const [random, setRandom] = useState("");
+  const [firstClick, setFirstClick] = useState(false);
 
   const jokeReducer = (state, action) => {
     switch (action.type) {
@@ -61,22 +62,31 @@ const CNJokes = () => {
   }, [random]);
 
   const getRandomJoke = () => {
+    setFirstClick(true);
     setRandom(state.data.value);
   };
 
   return (
     <div className="container my-5">
       <header>
-        <h1 className="h1">Hello Bitches</h1>
-        <img alt="Chuck Norris logo" src={state.data.icon_url}></img>
+        <h1 className="h1">Chuck Norris Jokes</h1>
+        <img alt="Chuck Norris logo" src="chuck-norris.png"></img>
       </header>
       <section className="container my-5">
         <button onClick={getRandomJoke}>Random</button>
-        <button className="mx-2">Categories</button>
       </section>
 
       <section className="container my-5">
-        {state.loading ? <Spinner /> : <p>{random}</p>}
+        {state.loading ? (
+          <Spinner size="xl" color="#eec643" />
+        ) : (
+          <p>{random}</p>
+        )}
+        {firstClick ? (
+          ""
+        ) : (
+          <p style={{ color: "#EEF0F2" }}>↑ cLik tHE BoTtOn ↑</p>
+        )}
       </section>
     </div>
   );

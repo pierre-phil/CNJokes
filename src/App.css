@@ -1,18 +1,40 @@
 .App {
   text-align: center;
+  font-family: "Lora", serif;
+}
+
+html,
+div {
+  background-color: #141414;
 }
 
 header img {
   margin: 2rem auto 2rem auto;
 }
 
+p {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #eec643;
+}
+
+h1 {
+  color: #ca9ce1;
+  font-weight: bold;
+}
+
 section button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
+  background-color: transparent; /* Green */
+  border: 2px solid #eef0f2;
+  font-weight: bold;
+  color: #ca9ce1;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+
+section button:hover {
+  color: #eef0f2;
 }
