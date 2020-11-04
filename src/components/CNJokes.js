@@ -32,6 +32,7 @@ const CNJokes = () => {
   const [state, dispatch] = useReducer(jokeReducer, initialState);
 
   useEffect(() => {
+    const API_KEY = process.env.REACT_APP_API_KEY;
     const fetchJokes = async () => {
       dispatch({ type: "FETCH_INIT" });
       try {
@@ -40,8 +41,7 @@ const CNJokes = () => {
           url: "https://rapidapi.p.rapidapi.com/jokes/random",
           headers: {
             accept: "application/json",
-            "x-rapidapi-key":
-              "fadbe4acd1msh8e4895490a6027ep1a60b5jsnc6302d5937e5",
+            "x-rapidapi-key": API_KEY,
             "x-rapidapi-host":
               "matchilling-chuck-norris-jokes-v1.p.rapidapi.com",
           },
@@ -63,11 +63,11 @@ const CNJokes = () => {
 
   const getRandomJoke = () => {
     setFirstClick(true);
-    setRandom(state.data.value);
+    setRandom(`« ${state.data.value} »`);
   };
 
   return (
-    <div className="container my-5">
+    <main className="my-5">
       <header>
         <h1 className="h1">Chuck Norris Jokes</h1>
         <img alt="Chuck Norris logo" src="chuck-norris.png"></img>
@@ -88,7 +88,7 @@ const CNJokes = () => {
           <p style={{ color: "#EEF0F2" }}>↑ cLik tHE BoTtOn ↑</p>
         )}
       </section>
-    </div>
+    </main>
   );
 };
 

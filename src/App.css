@@ -4,7 +4,8 @@
 }
 
 html,
-div {
+body,
+main {
   background-color: #141414;
 }
 
