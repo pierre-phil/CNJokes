@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "CN Jokes",
+  "name": "Your daily dose of Chuck Norris",
   "icons": [
     {
       "src": "/android-icon-36x36.png",
