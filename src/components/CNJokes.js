@@ -8,7 +8,6 @@ const CNJokes = () => {
   const toast = useToast();
 
   const [random, setRandom] = useState("");
-  const [firstClick, setFirstClick] = useState(false);
 
   const jokeReducer = (state, action) => {
     switch (action.type) {
@@ -18,6 +17,8 @@ const CNJokes = () => {
         return { ...state, loading: false, data: action.payload };
       case "FETCH_FAILURE":
         return { ...state, error: true };
+      case "FIRST_FETCH":
+        return { ...state, firstFetch: true };
       default:
         throw new Error(`Unhandled acion ${action.type} in jokeReducer`);
     }
@@ -27,6 +28,7 @@ const CNJokes = () => {
     data: "",
     loading: false,
     error: false,
+    firstFetch: false,
   };
 
   const [state, dispatch] = useReducer(jokeReducer, initialState);
@@ -62,8 +64,8 @@ const CNJokes = () => {
   }, [random]);
 
   const getRandomJoke = () => {
-    setFirstClick(true);
     setRandom(`« ${state.data.value} »`);
+    dispatch({ type: "FIRST_FETCH" });
   };
 
   return (
@@ -82,7 +84,7 @@ const CNJokes = () => {
         ) : (
           <p>{random}</p>
         )}
-        {firstClick ? (
+        {state.firstFetch ? (
           ""
         ) : (
           <p style={{ color: "#EEF0F2" }}>↑ cLik tHE BoTtOn ↑</p>
