@@ -1,12 +1,10 @@
 import React, { useEffect, useReducer, useState } from "react";
-import { useToast, Spinner } from "@chakra-ui/core";
+import { Spinner } from "@chakra-ui/core";
 import axios from "axios";
 
 import "../App.css";
 
 const CNJokes = () => {
-  const toast = useToast();
-
   const [random, setRandom] = useState("");
 
   const jokeReducer = (state, action) => {
@@ -52,12 +50,7 @@ const CNJokes = () => {
         dispatch({ type: "FETCH_SUCCESS", payload: result.data });
       } catch (error) {
         dispatch({ type: "FETCH_FAILURE" });
-        console.log("fail");
-        toast({
-          title: "Sorry, we couldn't fetch your joke",
-          status: "error",
-          duration: 3000,
-        });
+        console.log("Failed to fetch jokes");
       }
     };
     fetchJokes();
